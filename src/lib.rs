@@ -116,8 +116,8 @@ pub struct Uuid {
     bytes: UuidBytes
 }
 
-impl<S: hash::Writer + hash::Hasher> hash::Hash<S> for Uuid {
-    fn hash(&self, state: &mut S) {
+impl hash::Hash for Uuid {
+    fn hash<S : hash::Hasher>(&self, state: &mut S) {
         self.bytes.hash(state)
     }
 }
